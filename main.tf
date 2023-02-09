@@ -2,7 +2,7 @@
 # Specify SSH key pair to use
 variable "key_pair" {
   description = "What is the name of the Key Pair to use for the instance?"
-  type = string
+  type        = string
 }
 
 # Define provider
@@ -127,6 +127,9 @@ resource "aws_s3_object" "objects" {
   source   = "uploads/${each.value}"
 }
 
+output "vpc" {
+  value = aws_vpc.vpc.id
+}
 output "server-1" {
   value = aws_instance.server[0].public_ip
 }
