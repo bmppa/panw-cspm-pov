@@ -88,6 +88,7 @@ resource "aws_instance" "server" {
   key_name                    = var.key_pair
   associate_public_ip_address = true
   monitoring                  = true
+  user_data                   = file("install_docker.sh")
 
   root_block_device {
     encrypted   = true
