@@ -10,6 +10,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
+# Generates a random identifier
 resource "random_string" "random" {
   length  = 4
   special = false
@@ -136,4 +137,5 @@ output "server-1" {
 }
 output "public_s3_bucket" {
   value = aws_s3_bucket.public_bucket.bucket
+
 }
