@@ -23,6 +23,14 @@ resource "aws_security_group" "internet_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+      description = "RDP Access"
+      from_port   = 3389
+      to_port     = 3389
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+
   egress {
     description = "Egress Traffic"
     from_port   = 0
