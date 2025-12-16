@@ -16,16 +16,17 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
-    
+
     - name: Get Temporary Token
       run: |
-        TOKEN_RESPONSE=$(curl --location "${CORTEX_API_URL}/public_api/v1/unified-cli/image/token" \
+        TOKEN_RESPONSE=$(curl --location "${CORTEX_API_URL}/public_api/cas/v1/cortex-cli/create-token" \
           --header "Authorization: ${CORTEX_API_KEY}" \
           --header "x-xdr-auth-id: ${CORTEX_API_KEY_ID}" \
           --header 'Content-Type: application/json' \
           --data '{}')
         TEMP_TOKEN=$(echo $TOKEN_RESPONSE | jq -r '.token')
         echo "TEMP_TOKEN=$TEMP_TOKEN" >> $GITHUB_ENV
+    
     - name: Pull Docker Image
       run: |
         docker pull distributions.traps.paloaltonetworks.com/cli-docker/${{env.TEMP_TOKEN}}/method:amd64-${{env.CORTEX_CLI_VERSION}}
