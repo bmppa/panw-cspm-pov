@@ -51,10 +51,10 @@ jobs:
           --api-base-url ${CORTEX_API_URL} \
           --api-key ${CORTEX_API_KEY} \
           --api-key-id ${CORTEX_API_KEY_ID} \
+          --soft-fail \
           code scan \
           --directory /home/code \
           --repo-id ${{github.repository}} \
           --branch ${{github.ref_name}} \
-          --soft-fail \
           --source 'GITHUB_ACTIONS' \
           --create-repo-if-missing
