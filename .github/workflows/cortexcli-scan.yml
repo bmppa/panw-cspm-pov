@@ -55,5 +55,6 @@ jobs:
           --directory /home/code \
           --repo-id ${{github.repository}} \
           --branch ${{github.ref_name}} \
+          --soft-fail \
           --source 'GITHUB_ACTIONS' \
           --create-repo-if-missing
